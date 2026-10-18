@@ -1,0 +1,75 @@
+{
+  "updatedAt": "2026-10-18",
+  "events": [
+    {
+      "id": "autumn-2026",
+      "name": "Steam Autumn Sale 2026",
+      "kind": "seasonal",
+      "startAt": "2026-10-01T17:00:00.000Z",
+      "endAt": "2026-10-08T17:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/upcoming_events/2026_autumn_sale",
+      "sourceName": "Steamworks Autumn Sale 2026"
+    },
+    {
+      "id": "cooking-fest-2026",
+      "name": "Cooking Fest",
+      "kind": "fest",
+      "startAt": "2026-10-12T17:00:00.000Z",
+      "endAt": "2026-10-19T17:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/upcoming_events",
+      "sourceName": "Steamworks Upcoming Events"
+    },
+    {
+      "id": "steam-scream-v-2026",
+      "name": "Steam Scream V Fest",
+      "kind": "fest",
+      "startAt": "2026-10-26T17:00:00.000Z",
+      "endAt": "2026-11-02T18:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/upcoming_events",
+      "sourceName": "Steamworks Upcoming Events"
+    },
+    {
+      "id": "auto-battler-rpg-fest-2026",
+      "name": "Auto-Battler RPG Fest",
+      "kind": "fest",
+      "startAt": "2026-11-16T18:00:00.000Z",
+      "endAt": "2026-11-23T18:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/upcoming_events",
+      "sourceName": "Steamworks Upcoming Events"
+    },
+    {
+      "id": "winter-2026",
+      "name": "Steam Winter Sale 2026",
+      "kind": "seasonal",
+      "startAt": "2026-12-17T18:00:00.000Z",
+      "endAt": "2027-01-04T18:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/discounts/seasonalsales",
+      "sourceName": "Steamworks Seasonal Sales"
+    },
+    {
+      "id": "spring-2027",
+      "name": "Steam Spring Sale 2027",
+      "kind": "seasonal",
+      "startAt": "2027-03-18T17:00:00.000Z",
+      "endAt": "2027-03-25T17:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/discounts/seasonalsales",
+      "sourceName": "Steamworks Seasonal Sales"
+    },
+    {
+      "id": "summer-2027",
+      "name": "Steam Summer Sale 2027",
+      "kind": "seasonal",
+      "startAt": "2027-06-24T17:00:00.000Z",
+      "endAt": "2027-07-08T17:00:00.000Z",
+      "timezoneNote": "10:00 AM Pacific",
+      "sourceUrl": "https://partner.steamgames.com/doc/marketing/discounts/seasonalsales",
+      "sourceName": "Steamworks Seasonal Sales"
+    }
+  ]
+}

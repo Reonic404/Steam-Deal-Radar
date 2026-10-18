@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; connect-src 'self'; script-src 'self'"
+    />
+    <title>Steam Deal Radar</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <strong>Steam Deal Radar</strong>
+          <span>Free-to-keep watch</span>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-page="overview">Overview</button>
+        <button class="nav-btn" data-page="free">Free Games</button>
+        <button class="nav-btn" data-page="sales">Major Sales</button>
+        <button class="nav-btn" data-page="wishlist">Wishlist</button>
+        <button class="nav-btn" data-page="search">Search / Filters</button>
+        <button class="nav-btn" data-page="settings">Settings</button>
+      </nav>
+      <div class="sidebar-foot" id="sidebar-status">Idle</div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Overview</h1>
+          <p id="page-subtitle">Live Steam 100% off promotions for your region.</p>
+        </div>
+        <button class="primary" id="check-now">Check Now</button>
+      </header>
+
+      <section class="page active" id="page-overview">
+        <div class="stat-grid">
+          <article class="stat-card">
+            <span>Current free offers</span>
+            <strong id="stat-count">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Monitoring</span>
+            <strong id="stat-monitor">Off</strong>
+          </article>
+          <article class="stat-card">
+            <span>Last successful scan</span>
+            <strong id="stat-last">Never</strong>
+          </article>
+        </div>
+        <p class="banner" id="limitations"></p>
+        <p class="error" id="overview-error" hidden></p>
+        <h2>Recently discovered</h2>
+        <div class="card-grid" id="overview-cards"></div>
+      </section>
+
+      <section class="page" id="page-free">
+        <p class="muted" id="free-empty">No verified 100% off Steam promotions yet.</p>
+        <div class="card-grid" id="free-cards"></div>
+      </section>
+
+      <section class="page" id="page-sales">
+        <p class="muted">
+          Dates come from a local catalog copied from Steamworks. They are not invented at runtime.
+        </p>
+        <div class="sale-list" id="sale-list"></div>
+      </section>
+
+      <section class="page" id="page-wishlist">
+        <h2>Your wishlist</h2>
+        <p class="muted">Import a public Steam wishlist below to see resolved titles, prices, and discounts.</p>
+        <label class="toggle">
+          <input id="wishlist-only-discounted" type="checkbox" />
+          <span>Show only items with current discount</span>
+        </label>
+        <div id="wishlist-list" class="card-grid"></div>
+        <p id="wishlist-empty" class="muted">No items in wishlist.</p>
+        <div class="import-box">
+          <label class="field">
+            <span>Steam profile (steamID64 or vanity)</span>
+            <input id="wishlist-profile" type="text" placeholder="e.g. 76561197960287930 or gabelogannewell" />
+          </label>
+          <button id="import-wishlist" class="primary">Import public wishlist</button>
+          <p id="import-result" class="muted"></p>
+        </div>
+      </section>
+
+      <section class="page" id="page-search">
+        <h2>Search & Filters</h2>
+        <p class="muted">Quick filters for the current free-game list.</p>
+        <form id="search-form" class="settings">
+          <label class="field">
+            <span>Search</span>
+            <input name="query" type="search" placeholder="Search titles" />
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="hideDlcs" />
+            <span>Hide DLCs</span>
+          </label>
+          <label class="field">
+            <span>Filter by source</span>
+            <select name="filterStores" multiple size="2">
+              <option value="steam">Steam</option>
+              <option value="cheapshark">CheapShark</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Filter by deal type (comma separated)</span>
+            <input type="text" name="filterTypes" placeholder="e.g. base, demo" />
+          </label>
+          <button id="apply-search" class="primary">Apply filters</button>
+        </form>
+      </section>
+
+      <section class="page" id="page-settings">
+        <form id="settings-form" class="settings">
+          <label class="toggle">
+            <input type="checkbox" name="freeGameMonitoring" />
+            <span>Free-game monitoring</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="majorSalesMonitoring" />
+            <span>Major Steam sales</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="smallerPromotions" />
+            <span>Smaller promotions and themed fests</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="desktopNotifications" />
+            <span>Desktop notifications</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="notificationSound" />
+            <span>Notification sounds</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="startWithWindows" />
+            <span>Start with Windows</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="reducedMotion" />
+            <span>Reduced motion</span>
+          </label>
+          <label class="field">
+            <span>Scan frequency</span>
+            <select name="scanIntervalMinutes">
+              <option value="15">Every 15 minutes</option>
+              <option value="30">Every 30 minutes</option>
+              <option value="60">Every hour</option>
+              <option value="180">Every 3 hours</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Steam region</span>
+            <select name="countryCode">
+              <option>US</option>
+              <option>GB</option>
+              <option>DE</option>
+              <option>FR</option>
+              <option>NL</option>
+              <option>SE</option>
+              <option>NO</option>
+              <option>CA</option>
+              <option>AU</option>
+              <option>JP</option>
+              <option>BR</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Theme</span>
+            <select name="theme">
+              <option value="midnight">Midnight</option>
+              <option value="ember">Ember</option>
+              <option value="forest">Forest</option>
+              <option value="violet">Violet</option>
+            </select>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" name="hideClaimed" />
+            <span>Hide claimed deals</span>
+          </label>
+          <label class="field">
+            <span>Filter by source</span>
+            <select name="filterStores" multiple size="2">
+              <option value="steam">Steam</option>
+              <option value="cheapshark">CheapShark</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Filter by deal type (comma separated)</span>
+            <input type="text" name="filterTypes" placeholder="e.g. base, demo" />
+          </label>
+          <label class="field">
+            <span>Max display price (cents)</span>
+            <input type="number" name="maxPriceCents" min="0" />
+          </label>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="./renderer.ts"></script>
+  </body>
+</html>

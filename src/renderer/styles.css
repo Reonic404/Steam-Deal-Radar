@@ -1,0 +1,371 @@
+:root {
+  --bg: #071018;
+  --panel: #0f1b2c;
+  --panel-2: #132238;
+  --text: #e8f0ff;
+  --muted: #8ea0bd;
+  --accent: #5aa7ff;
+  --accent-2: #7ad1ff;
+  --line: rgba(122, 209, 255, 0.16);
+  --danger: #ff8a8a;
+  --ok: #6ee7b7;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  --radius: 16px;
+}
+
+html[data-theme="ember"] {
+  --bg: #140c09;
+  --panel: #22140f;
+  --panel-2: #2b1912;
+  --text: #fff3ea;
+  --muted: #c4a28d;
+  --accent: #ff8a3d;
+  --accent-2: #ffc48a;
+  --line: rgba(255, 138, 61, 0.18);
+}
+
+html[data-theme="forest"] {
+  --bg: #07140f;
+  --panel: #0e221b;
+  --panel-2: #143028;
+  --text: #e9fff5;
+  --muted: #93b8a8;
+  --accent: #4ade80;
+  --accent-2: #a7f3d0;
+  --line: rgba(74, 222, 128, 0.16);
+}
+
+html[data-theme="violet"] {
+  --bg: #100818;
+  --panel: #1c102c;
+  --panel-2: #27153d;
+  --text: #f4ecff;
+  --muted: #b39dcc;
+  --accent: #c084fc;
+  --accent-2: #f0abfc;
+  --line: rgba(192, 132, 252, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(circle at top left, var(--panel-2), var(--bg) 48%);
+  color: var(--text);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+}
+
+.sidebar {
+  padding: 20px 16px;
+  border-right: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 88%, black);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.brand span,
+.muted,
+.sidebar-foot,
+.stat-card span {
+  color: var(--muted);
+}
+
+.brand strong,
+.brand span {
+  display: block;
+}
+
+.brand span {
+  font-size: 12px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-btn {
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  font-size: 12px;
+}
+
+main {
+  padding: 22px 26px 32px;
+  overflow: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+h1,
+h2 {
+  margin: 0 0 6px;
+}
+
+.primary,
+.ghost {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary {
+  color: #081018;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.ghost {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: fade 0.28s ease;
+}
+
+.stat-grid,
+.card-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.stat-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.stat-card,
+.game-card,
+.sale-card,
+.construction,
+.settings {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.stat-card,
+.construction,
+.settings,
+.sale-card {
+  padding: 16px 18px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 28px;
+  margin-top: 8px;
+}
+
+.banner,
+.error {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.error {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 40%, transparent);
+}
+
+.game-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card img,
+.game-card .missing {
+  width: 100%;
+  height: 118px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--panel), var(--bg));
+}
+
+.game-card .body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.game-card h3 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.old {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.now {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.badge.discount {
+  background: color-mix(in srgb, var(--ok) 20%, transparent);
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.badge.free {
+  background: color-mix(in srgb, var(--ok) 30%, transparent);
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.discounted-item img,
+.discounted-item .missing {
+  border: 2px solid var(--ok);
+}
+
+.free-item img,
+.free-item .missing {
+  border: 2px solid var(--accent);
+}
+
+.sale-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sale-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sale-card a {
+  color: var(--accent-2);
+}
+
+.settings {
+  display: grid;
+  gap: 12px;
+  max-width: 560px;
+}
+
+.toggle,
+.field {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+select {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+html[data-reduced="true"] *,
+html[data-reduced="true"] *::before,
+html[data-reduced="true"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
